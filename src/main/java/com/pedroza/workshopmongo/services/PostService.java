@@ -1,5 +1,6 @@
 package com.pedroza.workshopmongo.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,11 @@ public class PostService {
 	
 	public List<Post> findByTitle(String text) {
 		return postRepository.findByTitle(text);
+	}
+	
+	public List<Post> searchByWord(String text, LocalDate minDate, LocalDate maxDate) {
+		maxDate = maxDate.plusDays(1);
+		return postRepository.searchByWord(text, minDate, maxDate);
 	}
 	
 	
